@@ -1,0 +1,8 @@
+version: "3.9"
+services:
+  tema2:
+    build:
+      context: .
+    container_name: tema2
+    volumes: 
+      - "/home/mate/test-scripts:/var/www/tema2"
