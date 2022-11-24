@@ -1,0 +1,12 @@
+---
+- name: run shell script
+  hosts: localhost
+  tasks: 
+    - name: run shell script module 2
+      command: sh ~/devopscademy/tema-modul2/tema1.sh
+      register: raw_output
+
+    - name: print raw output
+      ansible.buildin.debug:
+        var: raw_output
+        verbosity: 2

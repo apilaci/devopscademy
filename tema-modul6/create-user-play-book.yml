@@ -1,0 +1,32 @@
+---
+- name: create user
+  hosts: localhost
+  tasks: 
+    - name: create user command
+      ansible.builtin.user:
+        name: devops-ansible
+        shell: /bin/bash
+        groups: ansible
+        append: yes
+
+    - name: create folder in created user home
+      ansible.builtin.file:
+        path: /home/devops-ansible/devops
+        owner: devops-ansible
+        group: ansible
+        mode: '0644'
+
+    - name: create folder in created user home
+      ansible.builtin.file:
+        path: /home/devops-ansible/ansible
+        owner: devops-ansible
+        group: ansible
+        mode: '0644'
+
+    - name: install packages
+      ansible.builtin.package:
+        name:
+          - wget
+          - curl
+          - htop
+        state: latest
